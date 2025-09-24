@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class ZeroEnd {
+class zero_end {
     static ArrayList<Integer> move(ArrayList<Integer> arr, int n) {
         // Move non-zero elements to the front
         int nonZeroPos = 0;
