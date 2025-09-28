@@ -1,27 +1,26 @@
+
 class Solution {
-    public void setZeroes(int[][] matrix) {
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int[] row = new int[m]; 
-        int[] col = new int[n];
+    public int longestConsecutive(int[] nums) {
+        
+        Arrays.sort(nums);
+        int longest = 1;
+        int cnt =1;
+        int last = Integer.MIN_VALUE ;
 
-        // Step 1: Mark rows and columns that contain a 0
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == 0) {
-                    row[i] = 1; // Mark row i
-                    col[j] = 1; // Mark column j
-                }
+        for(int i =0; i < nums.length ; i++ ){
+            if(nums[i]-1 == last ){
+                cnt ++;
+                last = nums[i];
             }
-        }
+            else if(nums[i]==last){
 
-        // Step 2: Set zeroes based on marked rows and columns
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (row[i] == 1 || col[j] == 1) {
-                    matrix[i][j] = 0;
-                }
             }
+            else {
+                last = nums[i];
+                cnt =1;
+            }
+            longest = Math.max(longest , cnt);
         }
+        return longest ;
     }
 }
